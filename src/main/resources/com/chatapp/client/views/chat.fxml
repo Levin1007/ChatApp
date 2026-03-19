@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+  Chat screen.
+  Left panel: list of users.
+  Right panel: message history + input bar.
+-->
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.chatapp.client.controllers.ChatController"
+      prefWidth="760" prefHeight="520"
+      style="-fx-background-color: #0F1923;">
+
+    <!-- ═══ LEFT SIDEBAR: User list ═══════════════════════════════════════ -->
+    <VBox prefWidth="200" minWidth="160"
+          style="-fx-background-color: #131F2B;
+                 -fx-border-color: #1C2E3E;
+                 -fx-border-width: 0 1 0 0;">
+
+        <padding><Insets top="16" right="0" bottom="12" left="0"/></padding>
+
+        <!-- App name -->
+        <Label text="💬 Java Chat"
+               style="-fx-text-fill: white; -fx-font-size: 15;
+                      -fx-font-weight: bold; -fx-padding: 0 0 4 14;
+                      -fx-font-family: 'Segoe UI';"/>
+
+        <!-- Logged-in user badge -->
+        <Label fx:id="currentUserLabel"
+               text="Logged in as: ..."
+               style="-fx-text-fill: #5D8AA8; -fx-font-size: 11;
+                      -fx-padding: 0 0 14 14; -fx-font-family: 'Segoe UI';"/>
+
+        <Separator style="-fx-background-color: #1C2E3E;"/>
+
+        <Label text="USERS"
+               style="-fx-text-fill: #5D6D7E; -fx-font-size: 10;
+                      -fx-font-weight: bold; -fx-padding: 10 0 4 14;
+                      -fx-font-family: 'Segoe UI';"/>
+
+        <!-- User list — clicking selects a chat partner -->
+        <ListView fx:id="userListView"
+                  VBox.vgrow="ALWAYS"
+                  style="-fx-background-color: transparent;
+                         -fx-control-inner-background: transparent;
+                         -fx-border-color: transparent;"/>
+
+        <Separator style="-fx-background-color: #1C2E3E;"/>
+
+        <!-- Refresh button -->
+        <Button text="⟳  Refresh"
+                onAction="#handleRefresh"
+                prefWidth="200" prefHeight="34"
+                style="-fx-background-color: transparent;
+                       -fx-text-fill: #5D8AA8; -fx-font-size: 12;
+                       -fx-border-color: transparent; -fx-cursor: hand;"/>
+    </VBox>
+
+    <!-- ═══ RIGHT PANEL: Chat area ════════════════════════════════════════ -->
+    <VBox HBox.hgrow="ALWAYS"
+          style="-fx-background-color: #0F1923;">
+
+        <padding><Insets top="14" right="16" bottom="14" left="16"/></padding>
+
+        <!-- Header bar -->
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: #131F2B;
+                     -fx-background-radius: 8;
+                     -fx-padding: 10 14;">
+            <Label fx:id="chatHeaderLabel"
+                   text="⬅  Select a user to start chatting"
+                   style="-fx-text-fill: #ECF0F1; -fx-font-size: 14;
+                          -fx-font-weight: bold; -fx-font-family: 'Segoe UI';"/>
+        </HBox>
+
+        <javafx.scene.layout.Region prefHeight="10"/>
+
+        <!-- Message history list -->
+        <ListView fx:id="messageListView"
+                  VBox.vgrow="ALWAYS"
+                  style="-fx-background-color: #131F2B;
+                         -fx-control-inner-background: #131F2B;
+                         -fx-background-radius: 8;
+                         -fx-border-color: #1C2E3E;
+                         -fx-border-radius: 8;
+                         -fx-padding: 6;"/>
+
+        <javafx.scene.layout.Region prefHeight="10"/>
+
+        <!-- Input row -->
+        <HBox spacing="8" alignment="CENTER">
+
+            <TextField fx:id="messageInput"
+                       promptText="Type a message and press Enter…"
+                       HBox.hgrow="ALWAYS"
+                       prefHeight="40"
+                       onAction="#handleSend"
+                       style="-fx-background-color: #1C2733;
+                              -fx-text-fill: white;
+                              -fx-prompt-text-fill: #5D6D7E;
+                              -fx-background-radius: 8;
+                              -fx-border-color: #2C3E50;
+                              -fx-border-radius: 8;
+                              -fx-font-size: 13;
+                              -fx-padding: 0 12;"/>
+
+            <Button text="Send"
+                    onAction="#handleSend"
+                    prefHeight="40" prefWidth="80"
+                    defaultButton="true"
+                    style="-fx-background-color: #2980B9;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-font-size: 13;
+                           -fx-background-radius: 8;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </VBox>
+
+</HBox>

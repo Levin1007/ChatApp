@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+  Login screen.
+  fx:controller links this file to LoginController.java.
+  Each fx:id links a UI element to a @FXML field in the controller.
+-->
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.chatapp.client.controllers.LoginController"
+      alignment="CENTER"
+      spacing="14"
+      prefWidth="420" prefHeight="380"
+      style="-fx-background-color: #0F1923;">
+
+    <padding>
+        <Insets top="50" right="70" bottom="50" left="70"/>
+    </padding>
+
+    <!-- App icon + title -->
+    <Label text="💬"
+           style="-fx-font-size: 42;"/>
+
+    <Label text="Java Chat"
+           style="-fx-font-size: 26; -fx-font-weight: bold;
+                  -fx-text-fill: white; -fx-font-family: 'Segoe UI';"/>
+
+    <Label text="Sign in or create an account"
+           style="-fx-font-size: 12; -fx-text-fill: #7F8C8D;
+                  -fx-font-family: 'Segoe UI';"/>
+
+    <Region prefHeight="8"/>
+
+    <!-- Username -->
+    <TextField fx:id="usernameField"
+               promptText="Username"
+               prefHeight="40"
+               style="-fx-background-color: #1C2733;
+                      -fx-text-fill: white;
+                      -fx-prompt-text-fill: #5D6D7E;
+                      -fx-background-radius: 8;
+                      -fx-border-color: #2C3E50;
+                      -fx-border-radius: 8;
+                      -fx-font-size: 14;
+                      -fx-padding: 0 12;"/>
+
+    <!-- Password -->
+    <PasswordField fx:id="passwordField"
+                   promptText="Password"
+                   prefHeight="40"
+                   style="-fx-background-color: #1C2733;
+                          -fx-text-fill: white;
+                          -fx-prompt-text-fill: #5D6D7E;
+                          -fx-background-radius: 8;
+                          -fx-border-color: #2C3E50;
+                          -fx-border-radius: 8;
+                          -fx-font-size: 14;
+                          -fx-padding: 0 12;"/>
+
+    <!-- Status / error label (hidden until needed) -->
+    <Label fx:id="statusLabel"
+           text=""
+           wrapText="true"
+           visible="false"
+           maxWidth="280"
+           style="-fx-font-size: 12; -fx-text-fill: #E74C3C;
+                  -fx-font-family: 'Segoe UI';"/>
+
+    <!-- Log In button -->
+    <Button text="Log In"
+            onAction="#handleLogin"
+            prefWidth="280" prefHeight="40"
+            defaultButton="true"
+            style="-fx-background-color: #2980B9;
+                   -fx-text-fill: white;
+                   -fx-font-size: 14; -fx-font-weight: bold;
+                   -fx-background-radius: 8;
+                   -fx-cursor: hand;"/>
+
+    <!-- Register button -->
+    <Button text="Create New Account"
+            onAction="#handleRegister"
+            prefWidth="280" prefHeight="40"
+            style="-fx-background-color: transparent;
+                   -fx-text-fill: #2980B9;
+                   -fx-border-color: #2980B9;
+                   -fx-border-radius: 8;
+                   -fx-font-size: 13;
+                   -fx-cursor: hand;"/>
+
+</VBox>

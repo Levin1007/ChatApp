@@ -1,0 +1,19 @@
+# Maven build output
+target/
+
+# H2 database files (generated at runtime)
+*.mv.db
+*.trace.db
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Compiled class files
+*.class
