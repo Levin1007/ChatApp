@@ -1,6 +1,7 @@
 package com.chatapp.server.handlers;
 
 import com.chatapp.server.DatabaseManager;
+import com.chatapp.server.PasswordUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
@@ -55,7 +56,7 @@ public class RegisterHandler extends BaseHandler implements HttpHandler {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
-            stmt.setString(2, password); // NOTE: hash in production (see improvements)
+            stmt.setString(2, PasswordUtils.hash(password)); // NOTE: hash in production (see improvements)
             stmt.executeUpdate();
 
             sendResponse(exchange, 200, "{\"message\":\"Registration successful\"}");

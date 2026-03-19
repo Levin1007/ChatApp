@@ -23,20 +23,20 @@
         <padding><Insets top="16" right="0" bottom="12" left="0"/></padding>
 
         <!-- App name -->
-        <Label text="💬 Java Chat"
+        <Label text="ChatApp"
                style="-fx-text-fill: white; -fx-font-size: 15;
                       -fx-font-weight: bold; -fx-padding: 0 0 4 14;
                       -fx-font-family: 'Segoe UI';"/>
 
         <!-- Logged-in user badge -->
         <Label fx:id="currentUserLabel"
-               text="Logged in as: ..."
+               text="Angemeldet als: ..."
                style="-fx-text-fill: #5D8AA8; -fx-font-size: 11;
                       -fx-padding: 0 0 14 14; -fx-font-family: 'Segoe UI';"/>
 
         <Separator style="-fx-background-color: #1C2E3E;"/>
 
-        <Label text="USERS"
+        <Label text="Benutzer"
                style="-fx-text-fill: #5D6D7E; -fx-font-size: 10;
                       -fx-font-weight: bold; -fx-padding: 10 0 4 14;
                       -fx-font-family: 'Segoe UI';"/>
@@ -51,7 +51,7 @@
         <Separator style="-fx-background-color: #1C2E3E;"/>
 
         <!-- Refresh button -->
-        <Button text="⟳  Refresh"
+        <Button text="⟳  Aktualisieren"
                 onAction="#handleRefresh"
                 prefWidth="200" prefHeight="34"
                 style="-fx-background-color: transparent;
@@ -71,7 +71,7 @@
                      -fx-background-radius: 8;
                      -fx-padding: 10 14;">
             <Label fx:id="chatHeaderLabel"
-                   text="⬅  Select a user to start chatting"
+                   text="⬅  Wähle einen Nutzer aus, um den Chat zu starten"
                    style="-fx-text-fill: #ECF0F1; -fx-font-size: 14;
                           -fx-font-weight: bold; -fx-font-family: 'Segoe UI';"/>
         </HBox>
@@ -94,7 +94,7 @@
         <HBox spacing="8" alignment="CENTER">
 
             <TextField fx:id="messageInput"
-                       promptText="Type a message and press Enter…"
+                       promptText="Gib eine Nachricht ein und drücke die Eingabetaste…"
                        HBox.hgrow="ALWAYS"
                        prefHeight="40"
                        onAction="#handleSend"
@@ -107,7 +107,7 @@
                               -fx-font-size: 13;
                               -fx-padding: 0 12;"/>
 
-            <Button text="Send"
+            <Button text="senden"
                     onAction="#handleSend"
                     prefHeight="40" prefWidth="80"
                     defaultButton="true"

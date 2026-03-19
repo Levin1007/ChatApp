@@ -2,6 +2,7 @@ package com.chatapp.server.handlers;
 
 import com.chatapp.model.User;
 import com.chatapp.server.DatabaseManager;
+import com.chatapp.server.PasswordUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
@@ -50,7 +51,7 @@ public class LoginHandler extends BaseHandler implements HttpHandler {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
-            stmt.setString(2, password);
+            stmt.setString(2, PasswordUtils.hash(password));
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {

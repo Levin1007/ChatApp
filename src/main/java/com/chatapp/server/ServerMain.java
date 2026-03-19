@@ -5,6 +5,7 @@ import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.sql.SQLException;
 
 /**
  * Entry point for the server.
@@ -12,13 +13,15 @@ import java.net.InetSocketAddress;
  */
 public class ServerMain {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         // 1. Create tables if they don't exist yet
         DatabaseManager.initializeDatabase();
 
+        org.h2.tools.Server.createWebServer("-webPort", "8082").start();
+
         // 2. Create the HTTP server bound to port 8080
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(8081), 0);
 
         // 3. Register each API endpoint → handler
         server.createContext("/register",    new RegisterHandler());
@@ -31,7 +34,6 @@ public class ServerMain {
         server.setExecutor(null);
         server.start();
 
-        System.out.println("[SERVER] Running on http://localhost:8080");
         System.out.println("[SERVER] Press Ctrl+C to stop.");
     }
 }
